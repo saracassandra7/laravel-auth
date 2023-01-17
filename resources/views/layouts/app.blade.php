@@ -84,9 +84,9 @@
             </div>
         </nav>
 
-        {{-- <main class="">
+        <main class="">
             @yield('content')
-        </main> --}}
+        </main>
     </div>
 </body>
 
