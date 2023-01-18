@@ -20,7 +20,9 @@
                 <td>{{$project->id}}</td>
                 <td>{{$project->name}}</td>
                 <td>{{$project->client_name}}</td>
-                <td>xxxx</td>
+                <td>
+                    <a class="btn btn-primary" href="{{route('admin.projects.show', $project)}}" title="show"><i class="fa-regular fa-eye"></i></a>
+                </td>
             </tr>
 
             @empty
