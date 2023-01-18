@@ -28,12 +28,12 @@
             <div class="row h-100">
 
                 @auth
-                    <div class="col-2 h-100 bg-info">
+                    <div class="col-1 h-100 bg-info">
                        @include('admin.partials.aside')
                     </div>
                 @endauth
 
-                <div class="@auth col-10 @endauth">
+                <div class="@auth col-11 @endauth">
                     <main>
                         @yield('content')
                     </main>
