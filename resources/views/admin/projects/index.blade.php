@@ -4,6 +4,7 @@
 
 <div class="container">
     <h1 class="m-3 text-center">Elenco Progetti</h1>
+    <a class="btn btn-primary text-white mb-5" href="{{route('admin.projects.create')}}">Crea nuovo progetto</a>
 
     <table class="table table-striped">
         <thead>
