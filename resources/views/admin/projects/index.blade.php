@@ -6,6 +6,14 @@
     <h1 class="m-3 text-center">Elenco Progetti</h1>
     <a class="btn btn-primary text-white mb-5" href="{{route('admin.projects.create')}}">Crea nuovo progetto</a>
 
+    @if (session('deleted'))
+      <div>
+          <div class="alert alert-success" role="alert">
+              {{session('deleted')}}
+          </div>
+       </div>
+    @endif
+
     <table class="table table-striped">
         <thead>
           <tr>
@@ -24,6 +32,13 @@
                 <td>
                     <a class="btn btn-primary" href="{{route('admin.projects.show', $project)}}" title="show"><i class="fa-regular fa-eye"></i></a>
                     <a class="btn btn-warning " href="{{route('admin.projects.edit', $project)}}" title="edit"><i class="fa-solid fa-pencil"></i></a>
+                    <form class="d-inline"
+                    onsubmit="return confirm('Confermi l\'eliminazione?')"
+                    action="{{route('admin.projects.destroy', $project)}}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                        <button type="submit" class="btn btn-danger " title="delete"><i class="fa-solid fa-trash"></i></button>
+                    </form>
                 </td>
             </tr>
 
