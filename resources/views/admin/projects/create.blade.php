@@ -39,9 +39,14 @@
 
         <div class="mb-3">
             <label for="cover_image" class="form-label">Immagine</label>
-            <input type="file" class="form-control"
+            <input
+            onchange="showImage(event)"
+            type="file" class="form-control"
             name="cover_image" id="cover_image" placeholder="Inserire url dell'immagine cover"
             value="{{old('cover_image')}}">
+        </div>
+        <div class="mb-3">
+            <img width="200" id="output-image">
         </div>
 
         <button type="submit" class="btn btn-success mb-5">Invia</button>
@@ -49,5 +54,12 @@
     </form>
 
 </div>
+
+<script>
+    function showImage(event){
+        const tagImage = document.getElementById('output-image');
+        tagImage.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
 
 @endsection
