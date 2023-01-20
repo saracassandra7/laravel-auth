@@ -4,9 +4,16 @@
 
 <div class="contanier ms-4">
     <h1>{{$project->name}}</h1>
-    <div class="cover_image">
-        <img src="{{$project->cover_image}}" alt="{{$project->name}}">
-    </div>
+
+    @if ($project->cover_image)
+
+        <div class="cover_image">
+            <img src="{{asset('storage/' . $project->cover_image)}}" alt="{{$project->image_original_name}}">
+            <i>{{$project->image_original_name}}</i>
+        </div>
+
+    @endif
+
     <span>Cliente: {{$project->client_name}}</span>
     <p>Descrizione: {{$project->summary}}</p>
 
