@@ -22,7 +22,6 @@ class ProjectsTableSeeder extends Seeder
             $new_project->slug = Project::generateSlug($new_project->name);
             $new_project->client_name = $faker->words(3, true);
             $new_project->summary = $faker->paragraph();
-            $new_project->cover_image = 'http://www.asdalcione.it/wp-content/uploads/2016/08/jk-placeholder-image-1.jpg';
             $new_project->save();
         }
     }
