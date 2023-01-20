@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use function GuzzleHttp\Promise\all;
 
@@ -44,6 +45,13 @@ class ProjectController extends Controller
         $new_project = new Project();
 
         $form_data['slug'] = Project::generateSlug($form_data['name']);
+
+        if(array_key_exists('cover_image', $form_data)){
+            $form_data['image_original_name'] = $request->file('cover_image')->getClientOriginalName();
+
+            $form_data['cover_image'] = Storage::put('uploads', $form_data['cover_image']);
+        }
+
         $new_project->fill($form_data);
         $new_project->save();
 
