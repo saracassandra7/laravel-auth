@@ -16,7 +16,7 @@
 
    @endif
 
-    <form action="{{route('admin.projects.update', $project)}}" method="POST">
+    <form action="{{route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -41,9 +41,14 @@
 
         <div class="mb-3">
             <label for="cover_image" class="form-label">Immagine</label>
-            <input type="text" class="form-control"
+            <input
+            onchange="showImage(event)"
+            type="file" class="form-control"
             name="cover_image" id="cover_image" placeholder="Inserire url dell'immagine cover"
             value="{{old('cover_image', $project->cover_image)}}">
+        </div>
+        <div class="mb-3">
+            <img width="200" src="{{asset('storage/' . $project->cover_image)}}" id="output-image">
         </div>
 
         <button type="submit" class="btn btn-success mb-5">Invia</button>
@@ -51,5 +56,12 @@
     </form>
 
 </div>
+
+<script>
+    function showImage(event){
+        const tagImage = document.getElementById('output-image');
+        tagImage.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
 
 @endsection
