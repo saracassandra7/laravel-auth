@@ -35,7 +35,7 @@
                     </div>
                 @endauth
 
-                <div class="@auth col-11 @endauth">
+                <div class="@auth col-11 p-0 @endauth">
                     <main>
                         @yield('content')
                     </main>
